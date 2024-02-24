@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Metrics Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .metric-container {
+            margin: 0 auto;
+            max-width: 600px;
+        }
+        .metric {
+            text-align: center;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            background: #f2f2f2;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .metric h2 {
+            font-size: 20px;
+            color: #333;
+        }
+        .metric p {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="metric-container">
+            <div class="metric" id="bodyFat">
+                <h2>Body Fat Percentage</h2>
+                <p>0%</p>
+            </div>
+            <div class="metric" id="tdee">
+                <h2>Total Daily Energy Expenditure (TDEE)</h2>
+                <p>0 kcal</p>
+            </div>
+            <div class="metric" id="bmr">
+                <h2>Basal Metabolic Rate (BMR)</h2>
+                <p>0 kcal</p>
+            </div>
+            <div class="metric" id="bmi">
+                <h2>Body Mass Index (BMI)</h2>
+                <p>0</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            $('#bodyFat p').text(urlParams.get('bodyFat') + '%');
+            $('#tdee p').text(urlParams.get('tdee') + ' kcal');
+            $('#bmr p').text(urlParams.get('bmr') + ' kcal');
+            $('#bmi p').text(urlParams.get('bmi'));
+        });
+    </script>
+</body>
+</html>
