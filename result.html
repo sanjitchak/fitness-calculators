@@ -68,11 +68,19 @@
             const urlParams = new URLSearchParams(window.location.search);
             const name = urlParams.get('name') || 'Guest'; // Default to 'Guest' if name is not provided
             $('#userName').text(name);
-            $('#bodyFat p').text(urlParams.get('bodyFat') + '%');
-            $('#tdee p').text(urlParams.get('tdee') + ' kcal');
-            $('#bmr p').text(urlParams.get('bmr') + ' kcal');
-            $('#bmi p').text(urlParams.get('bmi'));
+    
+            // Using Math.round to round off the numbers
+            const bodyFat = Math.round(urlParams.get('bodyFat'));
+            const tdee = Math.round(urlParams.get('tdee'));
+            const bmr = Math.round(urlParams.get('bmr'));
+            const bmi = Math.round(urlParams.get('bmi'));
+    
+            $('#bodyFat p').text(bodyFat + '%');
+            $('#tdee p').text(tdee + ' kcal');
+            $('#bmr p').text(bmr + ' kcal');
+            $('#bmi p').text(bmi);
         });
     </script>
+    
 </body>
 </html>
