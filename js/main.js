@@ -1,36 +1,57 @@
-$(function(){
-	$("#wizard").steps({
-        headerTag: "h4",
-        bodyTag: "section",
-        transitionEffect: "fade",
-        enableAllSteps: true,
-        onStepChanging: function (event, currentIndex, newIndex) { 
-            if ( newIndex === 1 ) {
-                $('.wizard > .steps ul').addClass('step-2');
-            } else {
-                $('.wizard > .steps ul').removeClass('step-2');
+
+(function ($) {
+    "use strict";
+
+    
+    /*==================================================================
+    [ Validate ]*/
+    var input = $('.validate-input .input100');
+
+    $('.validate-form').on('submit',function(){
+        var check = true;
+
+        for(var i=0; i<input.length; i++) {
+            if(validate(input[i]) == false){
+                showValidate(input[i]);
+                check=false;
             }
-            if ( newIndex === 2 ) {
-                $('.wizard > .steps ul').addClass('step-3');
-            } else {
-                $('.wizard > .steps ul').removeClass('step-3');
-            }
-            return true; 
-        },
-        labels: {
-            finish: "Submit",
-            next: "Continue",
-            previous: "Back"
         }
+
+        return check;
     });
-    // Custom Button Jquery Steps
-    $('.forward').click(function(){
-    	$("#wizard").steps('next');
-    })
-    $('.backward').click(function(){
-        $("#wizard").steps('previous');
-    })
-    // Date Picker
-    var dp1 = $('#dp1').datepicker().data('datepicker');
-    dp1.selectDate(new Date());
-})
+
+
+    $('.validate-form .input100').each(function(){
+        $(this).focus(function(){
+           hideValidate(this);
+        });
+    });
+
+    function validate (input) {
+        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
+            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+                return false;
+            }
+        }
+        else {
+            if($(input).val().trim() == ''){
+                return false;
+            }
+        }
+    }
+
+    function showValidate(input) {
+        var thisAlert = $(input).parent();
+
+        $(thisAlert).addClass('alert-validate');
+    }
+
+    function hideValidate(input) {
+        var thisAlert = $(input).parent();
+
+        $(thisAlert).removeClass('alert-validate');
+    }
+    
+    
+
+})(jQuery);
