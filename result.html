@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitness Metrics Dashboard</title>
+    <title>Personalized Fitness Dashboard</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            padding-top: 50px;
+            padding-top: 20px;
+        }
+        .greeting {
+            text-align: center;
+            margin-bottom: 30px;
         }
         .metric-container {
             margin: 0 auto;
@@ -34,7 +38,9 @@
 </head>
 <body>
     <div class="container">
+        <h1 class="greeting">Hey, <span id="userName">Guest</span>!</h1>
         <div class="metric-container">
+            <!-- Metrics -->
             <div class="metric" id="bodyFat">
                 <h2>Body Fat Percentage</h2>
                 <p>0%</p>
@@ -60,6 +66,8 @@
     <script>
         $(document).ready(function() {
             const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name') || 'Guest'; // Default to 'Guest' if name is not provided
+            $('#userName').text(name);
             $('#bodyFat p').text(urlParams.get('bodyFat') + '%');
             $('#tdee p').text(urlParams.get('tdee') + ' kcal');
             $('#bmr p').text(urlParams.get('bmr') + ' kcal');
