@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Pay</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .greeting {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="greeting">Hey, <span id="userName">Guest</span>! <span id="userMessage"></span></h1>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name') || 'Guest'; // Default to 'Guest' if name is not provided
+            const email = urlParams.get('email');
+            const nooftimes = urlParams.get('nooftimes');
+            let userMessage = '';
+
+            if (email === 'no') {
+                userMessage = 'it seems your email is not in our database.';
+            } else if (nooftimes === '5') {
+                userMessage = 'it seems you have used up all your Personal Fitness Assessment credits.';
+            }
+
+            $('#userName').text(name);
+            $('#userMessage').text(userMessage);
+        });
+    </script>
+    
+</body>
+</html>
