@@ -70,12 +70,40 @@
 
                     <!-- Gender Field -->
                     <div class="wrap-input100">
-                        <select class="input100" name="gender" required>
+                        <select class="input100" name="gender" id="genderSelect" required>
                             <option value="" disabled selected>Select your gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
                     </div>
+
+ <!-- Label for the Image -->
+                    <div id="genderImageLabel" class="wrap-input100" style="text-align: center; display: none;">
+                        <label>Click to enlarge image</label>
+                    </div>
+
+<!-- Placeholder for the gender image -->
+<div id="genderImage" class="wrap-input100" style="text-align: center; display: none;">
+    <!-- Image will be inserted here based on the gender selected -->
+   
+</div>
+
+<!-- The Modal for enlarged image -->
+<div id="imageModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close2">&times;</span>
+        <img src="" id="enlargedImage" style="width: 100%;">
+    </div>
+</div>
+
+
+    <!-- Body Fat Percentage Field, initially hidden -->
+    <div class="wrap-input100" id="bodyFatContainer" style="display: none;">
+        <select class="input100" name="bodyFat" id="bodyFatSelect" required>
+            <!-- Placeholder option will be added here -->
+        </select>
+    </div>
 
                     <!-- Activity Level Field -->
                     <div class="wrap-input100">
@@ -107,5 +135,56 @@
             scale: 1.1
         })
     </script>
+   <script>
+    $(document).ready(function() {
+        // Update the options and image based on gender
+        $('#genderSelect').change(function() {
+            var gender = $(this).val();
+            var bodyFatOptions = {
+                'male': ['8%', '10%', '15%', '20%', '25%', '30%', '35%', '40%'],
+                'female': ['12%', '15%', '20%', '25%', '30%', '35%', '40%', '45%']
+            };
+            var imgSrc = {
+                'male': 'images/bodyfatmale.jpg', // Replace with the path to your male image
+                'female': 'images/bodyfatFemale.jpg' // Replace with the path to your female image
+            };
+
+            // Show or hide the body fat container and update the options
+            if (gender) {
+                $('#genderImageLabel').show(); // Show the label when a gender is selected
+                $('#genderImage').show().empty().append('<img src="' + imgSrc[gender] + '" alt="Gender Image" style="max-width: 200px; cursor: pointer;">');
+                $('#bodyFatSelect').empty().append('<option value="" disabled selected>Select the body fat % based on the image</option>'); // Placeholder option
+                bodyFatOptions[gender].forEach(function(percentage) {
+                    $('#bodyFatSelect').append(new Option(percentage, percentage));
+                });
+                $('#bodyFatContainer').show();
+            } else {
+                $('#genderImageLabel').hide(); // Hide the label if no gender is selected
+                $('#genderImage').hide();
+                $('#bodyFatContainer').hide();
+            }
+        });
+
+        // Enlarge image function
+        $('#genderImage').click(function() {
+            var src = $(this).find('img').attr('src');
+            $('#enlargedImage').attr('src', src);
+            $('#imageModal').show();
+        });
+
+        // Close the modal
+        $('.close2').click(function() {
+            $('#imageModal').hide();
+        });
+
+        // Handling outside click for modal close
+        $(window).click(function(e) {
+            if ($(e.target).is('#imageModal')) {
+                $('#imageModal').hide();
+            }
+        });
+    });
+</script>
+
 </body>
 </html>

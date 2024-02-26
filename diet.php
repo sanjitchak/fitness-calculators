@@ -19,6 +19,7 @@ $weight = sanitizeInputData($_POST['weight'] ?? '');
 $age = sanitizeInputData($_POST['age'] ?? '');
 $gender = sanitizeInputData($_POST['gender'] ?? '');
 $activityLevel = sanitizeInputData($_POST['activityLevel'] ?? '');
+$bodyFat = sanitizeInputData($_POST['bodyFat'] ?? '');
 
 // Create PDO connection
 try {
@@ -55,7 +56,7 @@ if ($stmt->rowCount() > 0) {
         $tdee = $bmr * $activityLevel;
 
         // Redirect to the result page with calculations
-        $url = "https://diet.simfitindia.com/result.html?name=" . urlencode($name) . "&email=" . $email . "&bodyFat=20&tdee=" . round($tdee) . "&bmr=" . round($bmr) . "&bmi=" . round($bmi);
+        $url = "https://diet.simfitindia.com/result.html?name=" . urlencode($name) . "&email=" . $email . "&bodyFat=" . $bodyFat . "&tdee=" . round($tdee) . "&bmr=" . round($bmr) . "&bmi=" . round($bmi);
         header("Location: $url");
         exit;
     } else {
