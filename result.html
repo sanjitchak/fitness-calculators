@@ -38,7 +38,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="greeting">Hey, <span id="userName">Guest</span>!</h1>
+        <h1 class="greeting">Hey, <span id="userName">Guest</span>! You have <span id="credit"> 0 </span>left.</h1>
         <div class="metric-container">
             <!-- Metrics -->
             <div class="metric" id="bodyFat">
@@ -74,11 +74,13 @@
             const tdee = Math.round(urlParams.get('tdee'));
             const bmr = Math.round(urlParams.get('bmr'));
             const bmi = Math.round(urlParams.get('bmi'));
+            const credit = urlParams.get('credits');
     
             $('#bodyFat p').text(bodyFat);
             $('#tdee p').text(tdee + ' kcal');
             $('#bmr p').text(bmr + ' kcal');
             $('#bmi p').text(bmi);
+            $('#credit').text(credit);
         });
     </script>
     

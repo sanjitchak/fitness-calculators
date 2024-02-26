@@ -153,7 +153,7 @@
             if (gender) {
                 $('#genderImageLabel').show(); // Show the label when a gender is selected
                 $('#genderImage').show().empty().append('<img src="' + imgSrc[gender] + '" alt="Gender Image" style="max-width: 322px; cursor: pointer;">');
-                $('#bodyFatSelect').empty().append('<option value="" disabled selected>Select the body fat % based on the image</option>'); // Placeholder option
+                $('#bodyFatSelect').empty().append('<option value="" disabled selected>Select Fat % as per image above</option>'); // Placeholder option
                 bodyFatOptions[gender].forEach(function(percentage) {
                     $('#bodyFatSelect').append(new Option(percentage, percentage));
                 });

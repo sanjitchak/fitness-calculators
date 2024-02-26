@@ -56,7 +56,7 @@ if ($stmt->rowCount() > 0) {
         $tdee = $bmr * $activityLevel;
 
         // Redirect to the result page with calculations
-        $url = "https://diet.simfitindia.com/result.html?name=" . urlencode($name) . "&email=" . $email . "&bodyFat=" . $bodyFat . "&tdee=" . round($tdee) . "&bmr=" . round($bmr) . "&bmi=" . round($bmi);
+        $url = "https://diet.simfitindia.com/result.html?name=" . urlencode($name) . "&email=" . $email . "&bodyFat=" . $bodyFat . "&tdee=" . round($tdee) . "&bmr=" . round($bmr) . "&bmi=" . round($bmi). "&credits=" . round(5-$nooftimes);
         header("Location: $url");
         exit;
     } else {
