@@ -70,12 +70,12 @@
             $('#userName').text(name);
     
             // Using Math.round to round off the numbers
-            const bodyFat = Math.round(urlParams.get('bodyFat'));
+            const bodyFat = urlParams.get('bodyFat');
             const tdee = Math.round(urlParams.get('tdee'));
             const bmr = Math.round(urlParams.get('bmr'));
             const bmi = Math.round(urlParams.get('bmi'));
     
-            $('#bodyFat p').text(bodyFat + '%');
+            $('#bodyFat p').text(bodyFat);
             $('#tdee p').text(tdee + ' kcal');
             $('#bmr p').text(bmr + ' kcal');
             $('#bmi p').text(bmi);
