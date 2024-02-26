@@ -152,7 +152,7 @@
             // Show or hide the body fat container and update the options
             if (gender) {
                 $('#genderImageLabel').show(); // Show the label when a gender is selected
-                $('#genderImage').show().empty().append('<img src="' + imgSrc[gender] + '" alt="Gender Image" style="max-width: 200px; cursor: pointer;">');
+                $('#genderImage').show().empty().append('<img src="' + imgSrc[gender] + '" alt="Gender Image" style="max-width: 322px; cursor: pointer;">');
                 $('#bodyFatSelect').empty().append('<option value="" disabled selected>Select the body fat % based on the image</option>'); // Placeholder option
                 bodyFatOptions[gender].forEach(function(percentage) {
                     $('#bodyFatSelect').append(new Option(percentage, percentage));
