@@ -54,16 +54,18 @@ if ($stmt->rowCount() > 0) {
             (10 * $weight + 6.25 * $heightInCm - 5 * $age - 161);
 
         $tdee = $bmr * $activityLevel;
-        if( $nooftimes >= 0)
+
+       
+        if( $nooftimes <= 5)
         {
         // Redirect to the result page with calculations
-        $url = "https://diet.simfitindia.com/result.html?name=" . urlencode($name) . "&email=" . $email . "&bodyFat=" . $bodyFat . "&tdee=" . round($tdee) . "&bmr=" . round($bmr) . "&bmi=" . round($bmi). "&credits=" . round(5-$nooftimes);
+        $url = "https://diet.simfitindia.com/result.html?name=" . urlencode($name) . "&email=" . $email . "&bodyFat=" . $bodyFat . "&tdee=" . round($tdee) . "&bmr=" . round($bmr) . "&bmi=" . round($bmi).  "&credits=" . round(5-$nooftimes);
         header("Location: $url");
         exit;
         }
         else {
  // Redirect to the result page with calculations
- $url = "https://diet.simfitindia.com/result.html?name=" . urlencode($name) . "&email=" . $email . "&bodyFat=" . $bodyFat . "&tdee=" . round($tdee) . "&bmr=" . round($bmr) . "&bmi=" . round($bmi). "&credits=" . "unlimited";
+ $url = "https://diet.simfitindia.com/result.html?name=" . urlencode($name) . "&email=" . $email . "&bodyFat=" . $bodyFat . "&tdee=" . round($tdee) . "&bmr=" . round($bmr) . "&bmi=" . round($bmi) . "&credits=" . "unlimited";
  header("Location: $url");
  exit;
         }
