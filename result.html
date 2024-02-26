@@ -7,7 +7,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            padding-top: 20px;
+            padding-top: 0px 20px 20px 20px;
         }
         .greeting {
             text-align: center;
@@ -38,7 +38,10 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="greeting">Hey, <span id="userName">Guest</span>! You have <span id="credit"> 0 </span> credits left.</h1>
+        <div class="logo-container" style="text-align: center;">
+            <a href="https://simfitindia.com/"><img src="images/logo.png" alt="Logo" style="max-width: 150px;"></a>
+        </div>
+        <h2 class="greeting">Hey, <span id="userName">Guest</span>! You have <span id="credit"> 0 </span> credits left.</h2>
         <div class="metric-container">
             <!-- Metrics -->
             <div class="metric" id="bodyFat">
